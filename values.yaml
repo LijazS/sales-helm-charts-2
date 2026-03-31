@@ -1,37 +1,37 @@
 namespace: sales-test-ns
 
 services:
-  - name: auth
+  auth:
     image: kubectlandchill/auth-service:v1
     port: 3000
     replicas: 2
     probe: true
 
-  - name: customer
+  customer:
     image: kubectlandchill/customer-service:v1
     port: 3000
     replicas: 2
     probe: true
 
-  - name: order
+  order:
     image: kubectlandchill/order-service:v1
     port: 3000
     replicas: 2
     probe: true
 
-  - name: invoice
+  invoice:
     image: kubectlandchill/invoice-service:v1
     port: 3000
     replicas: 2
     probe: true
 
-  - name: payment
+  payment:
     image: kubectlandchill/payment-service:v1
     port: 3000
     replicas: 2
     probe: true
 
-  - name: sales-ui
+  sales-ui:
     image: kubectlandchill/sales-invoice-ui:v1.1.2
     port: 3000
     replicas: 2
@@ -53,20 +53,26 @@ gateway:
   port: 80
 
 routes:
-  - path: /api/auth
+  auth:
+    path: /api/auth
     service: auth-service
 
-  - path: /api/customers
+  customers:
+    path: /api/customers
     service: customer-service
 
-  - path: /api/orders
+  orders:
+    path: /api/orders
     service: order-service
 
-  - path: /api/invoices
+  invoices:
+    path: /api/invoices
     service: invoice-service
 
-  - path: /api/payments
+  payments:
+    path: /api/payments
     service: payment-service
 
-  - path: /
+  ui:
+    path: /
     service: sales-ui-service
