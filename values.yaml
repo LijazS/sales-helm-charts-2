@@ -1,41 +1,95 @@
-namespace: sales-test-ns
+namespaces:
+  application: sales-test-ns
+  gateway: sales-gateway-ns
 
 services:
   auth:
-    image: kubectlandchill/auth-service:v1
+    image: kubectlandchill/auth-service
+    tag: v1.2.1
     port: 3000
     replicas: 2
-    probe: true
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "200m" 
+      memory: "512Mi"
+    
+  notifications:
+    image: kubectlandchill/sales-notification-service
+    tag: v1.0.1
+    port: 3000
+    replicas: 2
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "200m" 
+      memory: "512Mi"
+
 
   customer:
-    image: kubectlandchill/customer-service:v1
+    image: kubectlandchill/customer-service
+    tag: v1.2.1
     port: 3000
     replicas: 2
-    probe: true
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "200m" 
+      memory: "512Mi"
+    
 
   order:
-    image: kubectlandchill/order-service:v1
+    image: kubectlandchill/order-service
+    tag: v1.2.1
     port: 3000
     replicas: 2
-    probe: true
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "200m" 
+      memory: "512Mi"
 
   invoice:
-    image: kubectlandchill/invoice-service:v1
+    image: kubectlandchill/invoice-service
+    tag: v1.1.0
     port: 3000
     replicas: 2
-    probe: true
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "200m" 
+      memory: "512Mi"
+
 
   payment:
-    image: kubectlandchill/payment-service:v1
+    image: kubectlandchill/payment-service
+    tag: v1.1.0
     port: 3000
     replicas: 2
-    probe: true
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "200m" 
+      memory: "512Mi"
+
 
   sales-ui:
-    image: kubectlandchill/sales-invoice-ui:v1.1.2
+    image: kubectlandchill/sales-invoice-ui
+    tag: v1.1.4
     port: 3000
     replicas: 2
-    probe: false
+    requests:
+      cpu: "100m"
+      memory: "512Mi"
+    limits:
+      cpu: "250m" 
+      memory: "720Mi"
 
 hpa:
   enabled: true
