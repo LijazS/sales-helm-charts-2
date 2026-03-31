@@ -5,7 +5,7 @@ metadata:
   namespace: {{ .Values.namespaces.application }}
 spec:
   parentRefs:
-  - name: {{ .Values.gateway.name }}
+  - name: {{ .Values.gateway.gatewayName }}
     namespace: {{ .Values.namespaces.gateway }}
   rules:
   - matches:

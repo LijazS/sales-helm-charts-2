@@ -58,7 +58,7 @@ auth:
   replicaCount: 2
   port: 3000
   image:
-    repository: kubectlandchill/auth-service
+    repository: kubectlandchill/sales-auth-service
     tag: v1.2.1
   resources:
     requests:
@@ -73,7 +73,7 @@ customer:
   replicaCount: 2
   port: 3000
   image:
-    repository: kubectlandchill/customer-service
+    repository: kubectlandchill/sales-customer-service
     tag: v1.2.1
   resources:
     requests:
@@ -88,7 +88,7 @@ order:
   replicaCount: 2
   port: 3000
   image:
-    repository: kubectlandchill/order-service
+    repository: kubectlandchill/sales-order-service
     tag: v1.2.1
   resources:
     requests:
@@ -103,7 +103,7 @@ invoice:
   replicaCount: 2
   port: 3000
   image:
-    repository: kubectlandchill/invoice-service
+    repository: kubectlandchill/sales-invoice-service
     tag: v1.1.0
   resources:
     requests:
@@ -118,7 +118,7 @@ payment:
   replicaCount: 2
   port: 3000
   image:
-    repository: kubectlandchill/payment-service
+    repository: kubectlandchill/sales-payment-service
     tag: v1.1.0
   resources:
     requests:
@@ -165,7 +165,7 @@ storage:
   storageClassName: sales-storageclass
   provisioner: nfs.csi.k8s.io
   parameters:
-    server: 172.31.10.228
+    server: 65.0.107.237
     share: /var/nfs/sales-microservice/test
   reclaimPolicy: Retain
   volumeBindingMode: Immediate
@@ -198,7 +198,7 @@ storage:
 
 gateway:
   gatewayName: sales-gateway
-  namespace: {{ .Values.namespaces.gateway }}
+  namespace: sales-gateway-ns
   gatewayClassName: kgateway
   listeners:
     port: 80

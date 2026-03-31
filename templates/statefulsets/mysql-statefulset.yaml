@@ -28,7 +28,7 @@ spec:
 
           envFrom:
             - secretRef:
-                name: {{ .Values.secrets.mysql.name }}
+                name: mysql-secret
 
           volumeMounts:
             - name: mysql-data

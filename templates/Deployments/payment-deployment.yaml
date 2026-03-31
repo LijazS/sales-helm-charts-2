@@ -34,6 +34,6 @@ spec:
               cpu: {{ .Values.payment.resources.requests.cpu }}
           envFrom:
             - secretRef:
-                name: {{ .Values.secrets.backend.name }}
+                name: backend-secret
             - configMapRef:
                 name: {{ .Values.configmaps.backend.name }}

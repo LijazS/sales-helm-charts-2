@@ -27,7 +27,7 @@ spec:
         - containerPort: {{ .Values.invoice.port }}
         envFrom:
         - secretRef:
-            name: {{ .Values.secrets.backend.name }}
+            name: backend-secret
         - configMapRef:
             name: {{ .Values.configmaps.backend.name }}
         resources:
