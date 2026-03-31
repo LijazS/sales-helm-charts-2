@@ -61,7 +61,7 @@ auth:
   port: 3000
   image:
     repository: kubectlandchill/sales-auth-service
-    tag: v1.2.1
+    tag: v1.2.2
   resources:
     requests:
       cpu: "100m"
@@ -76,7 +76,7 @@ customer:
   port: 3000
   image:
     repository: kubectlandchill/sales-customer-service
-    tag: v1.2.1
+    tag: v1.2.2
   resources:
     requests:
       cpu: "100m"
@@ -91,7 +91,7 @@ order:
   port: 3000
   image:
     repository: kubectlandchill/sales-order-service
-    tag: v1.2.1
+    tag: v1.2.2
   resources:
     requests:
       cpu: "100m"
@@ -106,7 +106,7 @@ invoice:
   port: 3000
   image:
     repository: kubectlandchill/sales-invoice-service
-    tag: v1.1.0
+    tag: v1.1.1
   resources:
     requests:
       cpu: "100m"
@@ -121,7 +121,7 @@ payment:
   port: 3000
   image:
     repository: kubectlandchill/sales-payment-service
-    tag: v1.1.0
+    tag: v1.1.1
   resources:
     requests:
       cpu: "100m"
@@ -136,7 +136,7 @@ notifications:
   port: 3000
   image:
     repository: kubectlandchill/sales-notification-service
-    tag: v1.0.1
+    tag: v1.0.2
 
 salesUi:
   name: sales-ui-deployment
@@ -144,7 +144,7 @@ salesUi:
   port: 3000
   image:
     repository: kubectlandchill/sales-invoice-ui
-    tag: v1.1.4
+    tag: v1.1.5
   resources:
     requests:
       cpu: "100m"
