@@ -179,23 +179,23 @@ gateway:
 
 routes:
   auth:
-    path: /api/auth
+    path: /api/v1/auth
     service: auth-service
 
   customers:
-    path: /api/customers
+    path: /api/v1/customers
     service: customer-service
 
   orders:
-    path: /api/orders
+    path: /api/v1/orders
     service: order-service
 
   invoices:
-    path: /api/invoices
+    path: /api/v1/invoices
     service: invoice-service
 
   payments:
-    path: /api/payments
+    path: /api/v1/payments
     service: payment-service
 
   ui:

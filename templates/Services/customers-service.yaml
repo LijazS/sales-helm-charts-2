@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: customer-service
-  namespace: sales-test-ns
+  name: {{ .Values.services.customer.name }}
+  namespace: {{ .Values.namespaces.application }}
   labels:
     app: customers
 spec:

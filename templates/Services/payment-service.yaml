@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: payment-service
-  namespace: sales-test-ns
+  name: {{ .Values.services.payment.name }}
+  namespace: {{ .Values.namespaces.application }}
   labels:
     app: payment
 spec:

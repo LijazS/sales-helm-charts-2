@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: invoice-service
-  namespace: sales-test-ns
+  name: {{ .Values.services.invoice.name }}
+  namespace: {{ .Values.namespaces.application }}
   labels:
     app: invoice
 spec:
