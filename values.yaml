@@ -253,7 +253,7 @@ routes:
     port: 8000
 
   mysql:
-    service: mysql-service
+    service: mysql-db
     port: 3306
 
   rabbitmq:
