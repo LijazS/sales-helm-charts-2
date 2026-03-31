@@ -257,5 +257,5 @@ routes:
     port: 3306
 
   rabbitmq:
-    service: rabbitmq-service
+    service: rabbitmq
     port: 5672
