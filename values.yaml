@@ -161,7 +161,7 @@ salesUi:
   port: 3000
   image:
     repository: kubectlandchill/sales-invoice-ui
-    tag: v1.1.5
+    tag: v1.1.6
   resources:
     requests:
       cpu: "100m"
