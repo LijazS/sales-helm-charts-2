@@ -1,2 +1,52 @@
-app:
-  name: app
+namespace: sales-test-ns
+
+auth:
+  image: kubectlandchill/auth:uat
+  replicas: 2
+  port: 3000
+
+customer:
+  image: kubectlandchill/customer:uat
+  replicas: 2
+  port: 3000
+
+order:
+  image: kubectlandchill/order:uat
+  replicas: 2
+  port: 3000
+
+invoice:
+  image: kubectlandchill/invoice:uat
+  replicas: 2
+  port: 3000
+
+payment:
+  image: kubectlandchill/payment:uat
+  replicas: 2
+  port: 3000
+
+frontend:
+  image: kubectlandchill/sales-invoice-ui:uat
+  replicas: 2
+  port: 3000
+  servicePort: 8000
+
+gateway:
+  name: sales-gateway
+  namespace: sales-gateway-ns
+
+hpa:
+  enabled: true   
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "256Mi"
+  limits:
+    cpu: "300m"
+    memory: "512Mi"
+
+hpaConfig:
+  minReplicas: 2
+  maxReplicas: 5
+  cpuUtilization: 70

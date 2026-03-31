@@ -1,2 +1,72 @@
-app:
-  name: app
+namespace: sales-test-ns
+
+services:
+  - name: auth
+    image: kubectlandchill/auth-service:v1
+    port: 3000
+    replicas: 2
+    probe: true
+
+  - name: customer
+    image: kubectlandchill/customer-service:v1
+    port: 3000
+    replicas: 2
+    probe: true
+
+  - name: order
+    image: kubectlandchill/order-service:v1
+    port: 3000
+    replicas: 2
+    probe: true
+
+  - name: invoice
+    image: kubectlandchill/invoice-service:v1
+    port: 3000
+    replicas: 2
+    probe: true
+
+  - name: payment
+    image: kubectlandchill/payment-service:v1
+    port: 3000
+    replicas: 2
+    probe: true
+
+  - name: sales-ui
+    image: kubectlandchill/sales-invoice-ui:v1.1.2
+    port: 3000
+    replicas: 2
+    probe: false
+
+hpa:
+  enabled: true
+  minReplicas: 2
+  maxReplicas: 5
+  cpuUtilization: 70
+
+database:
+  enabled: true
+  image: mysql:8.4
+  storage: 2Gi
+
+gateway:
+  enabled: true
+  port: 80
+
+routes:
+  - path: /api/auth
+    service: auth-service
+
+  - path: /api/customers
+    service: customer-service
+
+  - path: /api/orders
+    service: order-service
+
+  - path: /api/invoices
+    service: invoice-service
+
+  - path: /api/payments
+    service: payment-service
+
+  - path: /
+    service: sales-ui-service

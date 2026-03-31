@@ -1,0 +1,6 @@
+services:
+  - name: auth
+    replicas: 1
+
+hpa:
+  enabled: false

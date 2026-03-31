@@ -1,2 +1,6 @@
-app:
-  name: app
+services:
+  - name: auth
+    replicas: 3
+
+hpa:
+  enabled: true
