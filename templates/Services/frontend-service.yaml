@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sales-ui-service
-  namespace: sales-test-ns
+  name: {{ .Values.services.frontend.name }}
+  namespace: {{ .Values.namespaces.application }}
   labels:
     app: sales-ui 
 spec:
