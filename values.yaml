@@ -53,6 +53,16 @@ secrets:
         RABBITMQ_DEFAULT_USER: salesuser
         RABBITMQ_DEFAULT_PASS: salespassword
 
+    notification:
+      name: notification-secret
+      data:
+        SMTP_HOST: smtp.hostinger.com
+        SMTP_PORT: "587"
+        SMTP_USER:
+        SMTP_PASS: 
+        FROM_EMAIL: notification@opslora.com
+        FROM_NAME: Opslora
+
 # ---------------- SERVICES ----------------
 
 auth:
@@ -137,6 +147,13 @@ notifications:
   image:
     repository: kubectlandchill/sales-notification-service
     tag: v1.0.2
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "256Mi"
+    limits:
+      cpu: "200m"
+      memory: "512Mi"
 
 salesUi:
   name: sales-ui-deployment
@@ -156,10 +173,13 @@ salesUi:
 # ---------------- HPA ----------------
 
 hpa:
+  name: sales-hpa
   enabled: true
   minReplicas: 2
   maxReplicas: 5
   cpuUtilization: 70
+  memoryUtilization: 80
+  stabilizationWindowSeconds: 300
 
 # ---------------- DATABASE ----------------
 
@@ -218,7 +238,7 @@ routes:
 
   customers:
     routeName: customer-route
-    path: /api/v1/customers
+    path: /api/v1/customers/
     service: customer-service
     port: 3000
 
@@ -257,5 +277,5 @@ routes:
     port: 3306
 
   rabbitmq:
-    service: rabbitmq-service
+    service: rabbitmq
     port: 5672
