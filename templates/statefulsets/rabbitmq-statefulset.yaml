@@ -34,6 +34,18 @@ spec:
           volumeMounts:
             - name: rabbitmq-data
               mountPath: {{ .Values.storage.rabbitmq.volumeMountPath }}
+
+          livenessProbe:
+            tcpSocket:
+              port: 5672
+            initialDelaySeconds: 30
+            periodSeconds: 10
+
+          readinessProbe:
+            tcpSocket:
+              port: 5672
+            initialDelaySeconds: 10
+            periodSeconds: 5
  
   volumeClaimTemplates:
     - metadata:

@@ -34,6 +34,18 @@ spec:
             - name: mysql-data
               mountPath: {{ .Values.storage.mysql.volumeMountPath }}
 
+          livenessProbe:
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 30
+            periodSeconds: 10
+
+          readinessProbe:
+            tcpSocket:
+              port: 3306
+            initialDelaySeconds: 10
+            periodSeconds: 5
+
   volumeClaimTemplates:
   - metadata:
       name: {{ .Values.storage.mysql.vctName }}
