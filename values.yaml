@@ -68,6 +68,7 @@ secrets:
 auth:
   name: auth-deployment
   replicaCount: 2
+  probePath: /api/v1/auth/health
   port: 3000
   image:
     repository: kubectlandchill/sales-auth-service
@@ -83,6 +84,7 @@ auth:
 customer:
   name: customers-deployment
   replicaCount: 2
+  probePath: /api/v1/customers/health
   port: 3000
   image:
     repository: kubectlandchill/sales-customer-service
@@ -98,6 +100,7 @@ customer:
 order:
   name: order-deployment
   replicaCount: 2
+  probePath: /api/v1/orders/health
   port: 3000
   image:
     repository: kubectlandchill/sales-order-service
@@ -113,6 +116,7 @@ order:
 invoice:
   name: invoice-deployment
   replicaCount: 2
+  probePath: /api/v1/invoices/health
   port: 3000
   image:
     repository: kubectlandchill/sales-invoice-service
@@ -128,6 +132,7 @@ invoice:
 payment:
   name: payment-deployment
   replicaCount: 2
+  probePath: /api/v1/payments/health
   port: 3000
   image:
     repository: kubectlandchill/sales-payment-service
@@ -143,6 +148,7 @@ payment:
 notifications:
   name: notification-deployment
   replicaCount: 2
+  probePath: /api/v1/notifications/health
   port: 3000
   image:
     repository: kubectlandchill/sales-notification-service
@@ -158,6 +164,7 @@ notifications:
 salesUi:
   name: sales-ui-deployment
   replicaCount: 2
+  probePath: /health
   port: 3000
   image:
     repository: kubectlandchill/sales-invoice-ui
@@ -284,21 +291,18 @@ probes:
   enabled: true
 
   liveness:
-    path: /health
     initialDelaySeconds: 30
     periodSeconds: 10
     timeoutSeconds: 5
     failureThreshold: 6
 
   readiness:
-    path: /health
     initialDelaySeconds: 10
     periodSeconds: 5
     timeoutSeconds: 3
     failureThreshold: 6
 
   startup:
-    path: /health
     initialDelaySeconds: 5
     periodSeconds: 5
     timeoutSeconds: 3
